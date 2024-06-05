@@ -1,4 +1,4 @@
-from pathlib import Path
+from pathlib import Path, os
 from decouple import config, Csv
 from dj_database_url import parse as db_url
 
@@ -39,7 +39,7 @@ ROOT_URLCONF = "setup.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, 'templates')],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
