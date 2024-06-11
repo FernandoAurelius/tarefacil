@@ -2,10 +2,6 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView, V
 
 from django.urls import reverse_lazy
 
-from django.http import HttpRequest
-
-from django.forms import forms
-
 from django.shortcuts import get_object_or_404, redirect
 
 from django.utils import timezone
@@ -27,7 +23,10 @@ class TodoCreateView(CreateView):
         if deadline < timezone.now().date():
             today = timezone.now().date()
             today = today.strftime("%d/%m/%Y")
-            form.add_error("deadline", f"O prazo de entrega precisa ser igual ou superior à data de hoje ({today}).")
+            form.add_error(
+                "deadline",
+                f"O prazo de entrega precisa ser igual ou superior à data de hoje ({today}).",
+            )
             return self.form_invalid(form)
         return super().form_valid(form)
 
