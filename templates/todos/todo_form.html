@@ -2,7 +2,11 @@
 {% block content %}
 {% load crispy_forms_tags %}
 <section class="container-fluid">
-    <h1>Nova Tarefa</h1>
+    {% if todo.pk %}
+        <h1>Editar Tarefa</h1>
+    {% else  %}
+        <h1>Nova Tarefa</h1>
+    {% endif %}
     <form method="POST">
         {% csrf_token %}
         {{ form|crispy }}
