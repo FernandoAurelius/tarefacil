@@ -1,0 +1,14 @@
+{% extends "todos/base.html" %}
+{% block content %}
+    <section class="container-fluid">
+        <h1>Excluir Tarefa?</h1>
+        <div class="alert alert-warning" role="alert">
+            Antes de darmos adeus a essa tarefa (😿), você precisa confirmar que tem certeza do que está fazendo.
+        </div>
+    </section>
+    <form method="POST" class="container-fluid">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Tenho certeza!</button>
+        <a href="{% url 'todo_list' %}" class="btn btn-primary">Voltar para lista de tarefas</a>
+    </form>
+{% endblock content %}

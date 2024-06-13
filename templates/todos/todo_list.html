@@ -1,0 +1,46 @@
+{% extends 'todos/base.html' %}
+{% block content %}
+  <section class="container-fluid">
+    <h1>Lista de tarefas</h1>
+    {% if todo_list %}
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID da tarefa</th>
+            <th scope="col">Título</th>
+            <th scope="col">Criado em: </th>
+            <th scope="col">Data de entrega</th>
+            <th scope="col">Finalizado em: </th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for todo in todo_list %}
+            <tr>
+                <th scope="row">{{ todo.pk }}</th>
+                <td>{{ todo.title }}</td>
+                <td>{{ todo.created_at }}</td>
+                <td>{{ todo.deadline }}</td>
+                <td>{{ todo.finished_at | default:"-" }}</td>
+                <td>
+                    <a href="{% url 'todo_complete' pk=todo.pk %}" class="btn btn-primary btn-sm {% if todo.finished_at %}disabled{% endif %}">Concluir</a>
+                    <a href="{% url 'todo_update' pk=todo.pk %}" class="btn btn-secondary btn-sm {% if todo.finished_at %}disabled{% endif %}">Editar</a>
+                    <a href="{% url 'todo_delete' pk=todo.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'todo_create' %}" class="btn btn-warning">Cadastrar nova tarefa</a>
+    {% else %}
+    <div class="alert alert-primary" role="alert">
+        <h4 class="alert-heading">Não há tarefas cadastradas!</h4>
+        <p>É bem fácil cadastrar uma tarefa e começar a organizar melhor sua rotina! Para isso, dirija-se até nossa página de <a href="{% url 'todo_create' %}" class="alert-link">criação de tarefas</a>.</p>
+        <p>Lá é onde a magia acontece, e onde eu te espero para podermos continuar sua rotina de produtividade!</p>
+        <hr>
+        <p class="mb-0">Psiu! Não conte aos outros sobre esse site, você vai perder sua vantagem de ter uma agenda organizada! 😉</p>
+    </div>
+    {% endif %}
+  </section>
+  </main>
+{% endblock %}
