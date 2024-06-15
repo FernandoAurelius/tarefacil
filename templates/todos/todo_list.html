@@ -31,7 +31,7 @@
             {% endfor %}
         </tbody>
     </table>
-    <a href="{% url 'todo_create' %}" class="btn btn-warning">Cadastrar nova tarefa</a>
+    <a href="{% url 'todo_create' %}" class="btn btn-success"><b>Cadastrar nova tarefa</b></a>
     {% else %}
     <div class="alert alert-primary" role="alert">
         <h4 class="alert-heading">Não há tarefas cadastradas!</h4>
@@ -42,5 +42,4 @@
     </div>
     {% endif %}
   </section>
-  </main>
 {% endblock %}
