@@ -6,7 +6,6 @@
     <table class="table">
         <thead>
           <tr>
-            <th scope="col">ID da tarefa</th>
             <th scope="col">Título</th>
             <th scope="col">Criado em: </th>
             <th scope="col">Data de entrega</th>
@@ -17,21 +16,20 @@
         <tbody>
             {% for todo in todo_list %}
             <tr>
-                <th scope="row">{{ todo.pk }}</th>
                 <td>{{ todo.title }}</td>
                 <td>{{ todo.created_at }}</td>
                 <td>{{ todo.deadline }}</td>
                 <td>{{ todo.finished_at | default:"-" }}</td>
                 <td>
-                    <a href="{% url 'todo_complete' pk=todo.pk %}" class="btn btn-primary btn-sm {% if todo.finished_at %}disabled{% endif %}">Concluir</a>
-                    <a href="{% url 'todo_update' pk=todo.pk %}" class="btn btn-secondary btn-sm {% if todo.finished_at %}disabled{% endif %}">Editar</a>
-                    <a href="{% url 'todo_delete' pk=todo.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                    <a href="{% url 'todo_complete' pk=todo.pk %}" class="btn btn-primary {% if todo.finished_at %}disabled{% endif %}">Concluir</a>
+                    <a href="{% url 'todo_update' pk=todo.pk %}" class="btn btn-secondary {% if todo.finished_at %}disabled{% endif %}">Editar</a>
+                    <a href="{% url 'todo_delete' pk=todo.pk %}" class="btn btn-danger">Excluir</a>
                 </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-    <a href="{% url 'todo_create' %}" class="btn btn-success"><b>Cadastrar nova tarefa</b></a>
+    <a href="{% url 'todo_create' %}" class="btn btn-success btn-lg"><b>Cadastrar nova tarefa</b></a>
     {% else %}
     <div class="alert alert-primary" role="alert">
         <h4 class="alert-heading">Não há tarefas cadastradas!</h4>
