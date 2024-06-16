@@ -12,20 +12,21 @@ from django.utils import timezone
 
 from todos.models import Todo
 
+
 # Defini uma classe Mixin "OwnedMixin", que herda de "LoginRequiredMixin", e defini os métodos get_queryset e form_valid de maneira a não ter
 # que repetir o código em todas as outras CBVs
 class OwnedMixin(LoginRequiredMixin):
     def get_queryset(self, *args, **kwargs):
-        return super().get_queryset(*args, **kwargs).filter(
-            owner=self.request.user
-        )
-    
+        return super().get_queryset(*args, **kwargs).filter(owner=self.request.user)
+
     def check_ownership(self, obj):
         if obj.owner != self.request.user:
-            messages.error(self.request, "Você não tem permissão para modificar esta tarefa.")
+            messages.error(
+                self.request, "Você não tem permissão para modificar esta tarefa."
+            )
             return False
         return True
-    
+
     def set_owner(self, form):
         form.instance.owner = self.request.user
         return form
@@ -34,6 +35,7 @@ class OwnedMixin(LoginRequiredMixin):
 class TodoListView(OwnedMixin, ListView):
     login_url = "accounts/login/"
     model = Todo
+
 
 class TodoCreateView(OwnedMixin, CreateView):
     login_url = "accounts/login/"
@@ -54,6 +56,7 @@ class TodoCreateView(OwnedMixin, CreateView):
             return self.form_invalid(form)
         return super().form_valid(form)
 
+
 class TodoUpdateView(OwnedMixin, UpdateView):
     login_url = "accounts/login/"
     model = Todo
@@ -63,6 +66,7 @@ class TodoUpdateView(OwnedMixin, UpdateView):
     def form_valid(self, form):
         form = self.set_owner(form)
         return super().form_valid(form)
+
 
 class TodoDeleteView(OwnedMixin, DeleteView):
     login_url = "accounts/login/"
@@ -75,8 +79,10 @@ class TodoDeleteView(OwnedMixin, DeleteView):
             return redirect("todo_list")
         return super().post(request, *args, **kwargs)
 
+
 class TodoCompleteView(View):
     login_url = "accounts/login/"
+
     def get(self, request, pk):
         todo = get_object_or_404(Todo, pk=pk, owner=request.user)
         todo.mark_has_complete()

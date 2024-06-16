@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarefácil</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link
+        href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALRZHeO6WxriAAAAAAAAAAC0Wh1PtVocqrdaHKq3WhuquFobqrpaG6q6WhuqvFsZqrtaGU8AAAAAAAAAAAAAAAC1WRzju1oapAAAAAAAAAAAsVodT7RaHKq1Whyqt1obqrdaG6q4WhuqulobqrpbG6q7WhlPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHZSIDUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOukQnjrpEL/66VDWQAAAAAAAAAAtFodT7VaHKq3Whyqt1obqrhaG6q6WhuqulobqrxbGaq7WhlPAAAAAAAAAADtpEKP7KRBcOukQv/qpUJYAAAAALFaHU+0WhyqtVocqrdaG6q3WhuquFobqrpaG6q6Wxuqu1oZTwAAAAAAAAAAAAAAAAAAAADsoz8c66RCvwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB2UiA1AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADrpEJ466RC/+ulQ1kAAAAAAAAAALRaHU+1Whyqt1ocqrdaG6q4WhuqulobqrpaG6q8Wxmqu1oZTwAAAAAAAAAA7aRCj+ykQXDrpEL/6qVCWAAAAACxWh1PtFocqrVaHKq3Whuqt1obqrhaG6q6WhuqulsbqrtaGU8AAAAAAAAAAAAAAAAAAAAA7KM/HOukQr8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAP//AAD//wAAzgMAAM4DAAD//wAA//8AAN4DAACuAwAA9/8AAP//AADeAwAArgMAAPf/AAD//wAA//8AAA=="
+        rel="icon" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+    </style>
+</head>
+
+<body class="d-flex flex-column vh-100">
+    <main class="flex-fill flex-shrink-0 mb-4">
+        <nav class="navbar bg-dark mb-4" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'todo_list' %}">
+                    <img width="30" height="24" src="https://img.icons8.com/fluency/48/todo-list--v1.png" alt="Logo"
+                        class="d-inline-block align-text-top">
+                    Tarefácil
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link" data-bs-theme="dark" href="{% url 'authView' %}">Registrar-se</a>
+                        <a class="nav-link" data-bs-theme="dark" href="{% url 'login' %}">Login</a>
+                        <a class="nav-link" data-bs-theme="dark" href="{% url 'logout' %}">Logout</a>
+                        <a class="nav-link" data-bs-theme="dark" href="{% url 'todo_list' %}">Lista de Tarefas</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid">
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading"><b>Finalidade do Projeto</b></h4>
+                <p>Cada vez mais, nos dias de hoje, as pessoas acabam tendo dificuldade em encontrar organização em suas
+                    vidas. Entre as
+                    páginas de "infinite-scroll", e com tanto conteúdo, informação e entretenimento acessível, fica
+                    difícil reservar um tempo para
+                    parar, respirar e tentar entender tudo o que acontece.
+                </p>
+                <hr>
+                <p class="mb-0">Em vista disso, esse projeto simples visa ressignificar o modelo de projeto
+                    <b>"Todo"</b> ou <b>"Lista de Tarefas"</b> para um lembrete da oportunidade maravilhosa que temos
+                    todos os dias: a de <b><i>recomeçar, e de começar
+                            a planejar</i></b>.
+                </p>
+            </div>
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Funcionalidades
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>O Projeto visa facilitar o gerenciamento de tarefas, com uma interface simples, de
+                                maneira a agilizar o início da organização.</strong> Explorando suas funcionalidades,
+                            você pode encontrar tudo o que um CRUD oferece, além da possibilidade da criação de uma
+                            conta funcional,
+                            para salvar suas tarefas e visualizá-las depois. As opções variam:
+                            <div class="list-group mt-2">
+                                <a href="{% url 'todo_create' %}"
+                                    class="list-group-item list-group-item-action list-group-item-primary">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mt-2">✍️ Criação de Tarefas</h5>
+                                    </div>
+                                </a>
+                                <a href="{% url 'todo_list' %}"
+                                    class="list-group-item list-group-item-action list-group-item-secondary">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mt-2">📝 Edição de Tarefas</h5>
+                                    </div>
+                                </a>
+                                <a href="{% url 'todo_list' %}"
+                                    class="list-group-item list-group-item-action list-group-item-danger">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mt-2">🗑️ Deleção de tarefas</h5>
+                                    </div>
+                                </a>
+                                <a href="{% url 'todo_list' %}"
+                                    class="list-group-item list-group-item-action list-group-item-success">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mt-2">✅ Conclusão de Tarefas</h5>
+                                    </div>
+                                </a>
+                                <a href="{% url 'todo_list' %}"
+                                    class="list-group-item list-group-item-action list-group-item-warning">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mt-2">📋 Lista de todas as suas Tarefas</h5>
+                                    </div>
+                                </a>
+                                <a href="{% url 'authView' %}"
+                                    class="list-group-item list-group-item-action list-group-item-info">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mt-2">📇 Cadastro</h5>
+                                    </div>
+                                </a>
+                                <a href="{% url 'login' %}"
+                                    class="list-group-item list-group-item-action list-group-item-primary">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mt-2">👤 Login</h5>
+                                    </div>
+                                </a>
+                                <a href="{% url 'logout' %}"
+                                    class="list-group-item list-group-item-action list-group-item-secondary">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mt-2">💨 Logout</h5>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Tecnologias
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>Uma das propostas do projeto, como aplicação web, era a de ter, em um único lugar,
+                                tanto o front-end quanto o back-end da aplicação.</strong> Isso, felizmente, foi
+                            possível graças ao conjunto
+                            de tecnologias utilizadas e, principalmente, ao Django, que cumpre muito bem com a proposta
+                            de juntar tanto
+                            os arquivos estáticos de uma aplicação (HTML, CSS, JavaScript) com a dinamicidade
+                            proporcionada pela programação
+                            do lado do servidor. <b>Abaixo, você pode ver com mais detalhe todas as tecnologias
+                                utilizadas no presente projeto:</b>
+                            <ul class="list-group mt-2" data-theme-bs="dark">
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <img width="50" height="50" src="https://img.icons8.com/ios/50/django.png"
+                                        alt="django" />
+                                    <div class="ms-2 me-auto">
+                                        <div class="fw-bold">Django</div>
+                                        Framework de desenvolvimento web rápido e eficiente do Python, usado para
+                                        definir toda a lógica da aplicação, segundo o Modelo MVT
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <img width="50" height="50" src="https://img.icons8.com/ios/50/html.png"
+                                        alt="html" />
+                                    <div class="ms-2 me-auto">
+                                        <div class="fw-bold">HTML</div>
+                                        Linguagem de Marcação de Hipertexto, usada pra definir a estrutura visível da
+                                        aplicação
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <img width="50" height="50" src="https://img.icons8.com/ios/50/css.png" alt="css" />
+                                    <div class="ms-2 me-auto">
+                                        <div class="fw-bold">CSS</div>
+                                        Linguagem de Estilização em Cascata, usada pra definir o estilo da interface da
+                                        aplicação
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <img width="50" height="50" src="https://img.icons8.com/ios/50/bootstrap.png"
+                                        alt="bootstrap" />
+                                    <div class="ms-2 me-auto">
+                                        <div class="fw-bold">Bootstrap</div>
+                                        Framework front-end que fornece estruturas CSS para desenvolvimento rápido de
+                                        aplicações web
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <img width="50" height="50" src="https://img.icons8.com/ios/50/git.png" alt="git" />
+                                    <div class="ms-2 me-auto">
+                                        <div class="fw-bold">Git</div>
+                                        Software de controle de versionamento de código, usado para rastrear e versionar
+                                        o desenvolvimento do projeto, desde seu início.
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <img width="50" height="50" src="https://img.icons8.com/ios/50/github--v1.png"
+                                        alt="github--v1" />
+                                    <div class="ms-2 me-auto">
+                                        <div class="fw-bold">GitHub</div>
+                                        Plataforma de compartilhamento de repositórios Git, usada para hospedar o
+                                        código-fonte da aplicação.
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <img width="50" height="50"
+                                        src="https://fly.io/static/images/brand/brandmark-dark.svg" alt="fly.io" />
+                                    <div class="ms-2 me-auto">
+                                        <div class="fw-bold">Fly.io</div>
+                                        Platform-as-service que oferece facilidade no momento do deploy para diversas
+                                        linguagens e modelos de aplicação, incluindo o Django
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Contato
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>Abaixo, você pode encontrar alguns dos links de contato que eu disponho. Sinta-se a
+                                vontade para me contatar e debater qualquer aspecto do projeto, ver outros projetos e
+                                repositórios ou só bater papo. 😸</strong>
+                            <ul class="list-group mt-2">
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <img width="50" height="50" src="https://img.icons8.com/ios/50/linkedin.png"
+                                        alt="linkedin" />
+                                    <div class="ms-2 me-auto">
+                                        <div class="fw-bold">LinkedIn</div>
+                                        <p><a href="https://linkedin.com/in/devflores"
+                                                class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Aqui!</a>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <img width="50" height="50" src="https://img.icons8.com/ios/50/gmail-new.png"
+                                        alt="gmail-new" />
+                                    <div class="ms-2 me-auto">
+                                        <div class="fw-bold">Gmail</div>
+                                        <p><a href="https://mail.google.com/mail/u/0/?fs=1&to=miguelfernandoaurelius@gmail.com&su=Assunto&body=Corpo+da+mensagem&tf=cm"
+                                                class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Aqui!</a>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <img width="50" height="50" src="https://img.icons8.com/ios/50/github--v1.png"
+                                        alt="github--v1" />
+                                    <div class="ms-2 me-auto">
+                                        <div class="fw-bold">GitHub</div>
+                                        <p><a href="https://github.com/FernandoAurelius"
+                                                class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Aqui!</a>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <img width="50" height="50" src="https://img.icons8.com/ios/50/portfolio.png" alt="portfolio"/>
+                                    <div class="ms-2 me-auto">
+                                        <div class="fw-bold">Portfolio</div>
+                                        <p>Veja esse e outros projetos <a href="floresdev.com"
+                                                class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">aqui!</a>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="text-center text-white mt-auto" style="background-color: #28242c;">
+        <!-- Grid container -->
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); color: white;">
+            @2024
+            <a class="text-white text-center" style="color: white;" href="https://linkedin.com/in/devflores">Fernando
+                Aurelius</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

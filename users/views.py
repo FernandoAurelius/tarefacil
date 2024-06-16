@@ -17,7 +17,7 @@ def authView(request: HttpRequest):
     else:
         form = UserCreationForm()
         return render(request, "registration/signup.html", {"form": form})
-    
+
 
 def logout(request: HttpRequest):
 
@@ -26,3 +26,7 @@ def logout(request: HttpRequest):
         return redirect("login")
     else:
         return render(request, "registration/logout.html")
+    
+
+def home(request: HttpRequest):
+    return render(request, "home.html")

@@ -1,15 +1,21 @@
 from pathlib import Path, os
 from decouple import config, Csv
 from dj_database_url import parse as db_url
+import environ
+from django.contrib import auth
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = config("SECRET_KEY")
+env = environ.Env(Debug=(bool, False))
 
-DEBUG = config("DEBUG", cast=bool, default=False)
+environ.Env.read_env(BASE_DIR / '.env')
 
-ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv())
+SECRET_KEY = env("SECRET_KEY")
+
+DEBUG = env("DEBUG")
+
+ALLOWED_HOSTS = [".fly.dev", "localhost", "127.0.0.1"]
 
 CSRF_COOKIE_SECURE = True
 
@@ -23,7 +29,7 @@ SECURE_HSTS_PRELOAD = True
 
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 # Application definition
 
@@ -82,11 +88,9 @@ WSGI_APPLICATION = "setup.wsgi.application"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    "default": config(
-        "DATABASE_URLS", default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}", cast=db_url
-    )
+    'default': env.db()
 }
-
+    
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators

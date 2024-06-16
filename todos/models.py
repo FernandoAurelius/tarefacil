@@ -6,10 +6,7 @@ from django.conf import settings
 
 
 class OwnedModel(models.Model):
-    owner = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE
-    )
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     class Meta:
         abstract = True
