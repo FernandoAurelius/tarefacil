@@ -15,9 +15,11 @@ SECRET_KEY = env("SECRET_KEY")
 
 DEBUG = env("DEBUG")
 
-ALLOWED_HOSTS = [".fly.dev", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["*", ".fly.dev", "localhost", "127.0.0.1", "0.0.0.0:8000", "https://0.0.0.0:8000", "http://0.0.0.0:8000"]
 
 CSRF_COOKIE_SECURE = True
+
+CSRF_TRUSTED_ORIGINS = ["https://*", "https://*.fly.dev", "https://0.0.0.0:8000", "http://0.0.0.0:8000"]
 
 SESSION_COOKIE_SECURE = True
 

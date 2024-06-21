@@ -187,4 +187,12 @@ cython_debug/
 .history
 .ionide
 
+# Templates
+*.html
+.html
+*.css
+.css
+*.js
+.js
+
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode

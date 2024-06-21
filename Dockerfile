@@ -17,6 +17,6 @@ RUN set -ex && \
     pip install gunicorn
 COPY . /code
 
+RUN chmod +x migrate.sh
 EXPOSE 8000
-
-CMD ["gunicorn", "--bind", ":8000", "--workers", "2", "setup.wsgi"]
+ENTRYPOINT ["./migrate.sh"]
